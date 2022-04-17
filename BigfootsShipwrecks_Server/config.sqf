@@ -15,8 +15,8 @@ BS_player_showCrateClaimMessageRadius = 10; // Players must be this close (in me
 BS_class_crate = "Exile_Container_SupplyBox"; // Class of loot crate.
 BS_class_wreckage = "Land_UWreck_FishingBoat_F"; // Class of shipwreck.
 
-BS_AllowRespawn = true;	/// turns crate respawns on/off
-BS_AllowRespawn_Timer = 30;
+BS_AllowRespawn = true;	/// turns shipwreck respawns on/off
+BS_AllowRespawn_Timer = 300; //time in seconds for next set of shipwrecks to respawn when all wrecks on map have cleared.
 
 BS_count_shipwrecks = 3; // Total wrecks to spawn on server start
 BS_respawn_count = 3; // Total wrecks to respawn once all wrecks from server start have been cleared.
@@ -56,13 +56,15 @@ BS_faceWear = "G_B_Diving";
 /////////////////
 //////////////////End of AI Config////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-crate_seperation_distance = 10000; /// sets the min distance shipwrecks can spawn near each other. be aware of the size of your map to ensure the loop can complete.
+Bs_crate_seperation_distance = 10000; /// sets the min distance shipwrecks can spawn near each other. be aware of the size of your map to ensure the loop can complete.
 
 ////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
 ///// This script based on your settings will limit how deep or shallow the water is where the crates spawn... no more deep deep water if desired
+
+///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 BS_locations_WaterDepth_max = 50;   /// the max water depth you want your crates to spawn in 
 BS_locations_WaterDepth_MIN = 25;	   /// the min water depth you want your crates to spawn in
-
+///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 
 BS_locations_crateWreckOffset = 10; // Distance from wreck to spawn crate.
 // BS_locations_center = [14912.4,15108.7,0]; // Center o fmap from which to spawn wrecks, on Altis this is in the central bay
@@ -113,7 +115,7 @@ BS_boats =
 	"I_C_Boat_Transport_02_F",
 	"I_C_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F",
-	"O_Boat_Armed_01_hmg_F"
+	"O_Boat_Armed_01_hmg_F",
 	
 	//////////RHS///////////////////////////////
 	//"rhsgref_hidf_rhib",					////
@@ -195,3 +197,10 @@ publicVariable "BS_Respect_Pay";
 publicVariable "BS_BoatMissions";
 publicVariable "BS_respawn_count";
 publicVariable "BS_RangeCleanUp";
+publicVariable "BS_MapMarker";
+publicVariable "BS_AllowRespawn";
+publicVariable "BS_AllowRespawn_Timer";
+publicVariable "Bs_crate_seperation_distance";
+publicVariable "BS_locations_WaterDepth_max";
+publicVariable "BS_locations_WaterDepth_MIN";
+
