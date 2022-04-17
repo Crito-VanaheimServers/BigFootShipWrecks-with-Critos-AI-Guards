@@ -16,6 +16,7 @@
 * TaylorSwift for very helpful mod template.
 * Second_Coming for Occupation mod from which I learned techniques.
 * Thank you to all previous scriptors listed above and and Bigfoot for previous versions. - Crito
+* Thank you to Ketanna for the depth and distance settings and hand in other portions. - Crito
 
 #Summary:
 Exile forum thread: http://www.exilemod.com/topic/17352-bigfoots-shipwrecks/
