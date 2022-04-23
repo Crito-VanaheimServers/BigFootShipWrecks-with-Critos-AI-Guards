@@ -64,7 +64,9 @@ _bsUnit = _bsGroup createUnit ["O_Soldier_unarmed_F", _bsSpawn, [], 0, "CAN_COLL
 		_bsUnit linkItem "ItemMap";
 		_bsUnit linkItem "ItemCompass";
 		_bsUnit linkItem "ItemRadio";
-			
+		
+		missionNamespace setVariable ["BSUnit",_bsUnit];
+		
 		_bsUnit addMPEventHandler ["MPKilled",'if (isServer) then { _this call ExileServer_BigfootsShipwrecks_RespectPayout; }; '];
 		
 _bsUnit 

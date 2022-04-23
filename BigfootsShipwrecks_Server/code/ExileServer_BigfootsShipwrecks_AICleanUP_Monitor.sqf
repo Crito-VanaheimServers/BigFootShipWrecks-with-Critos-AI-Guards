@@ -1,6 +1,6 @@
 /*
 ExileServer_BigfootsShipwrecks_AICleanUP_Monitor
-by Ketanna @Kronik Servers
+by Ketanna
 */
 
 	private ["_bsGroupID","_markerPosition","_bsGroup","_wreckageVars","_wreckage","_bsBoatArray","_bs_cleanup","_bs_playerCleanRange","_bsCrate","_bs_crateCleanRange"];

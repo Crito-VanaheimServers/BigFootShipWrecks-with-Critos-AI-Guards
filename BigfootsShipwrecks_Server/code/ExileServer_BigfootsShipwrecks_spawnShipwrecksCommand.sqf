@@ -23,7 +23,6 @@ _maxBoats = _this select 7;
 
 _wreckCount = BS_count_shipwrecks;
 
-
 		 ///// builds an array of ship wreck map markers for later use  ////
 		 BS_Array = []; 
 		 { 
@@ -76,10 +75,10 @@ for "_i" from 1 to _wreckCount do
 		if (_wreckcounter >= 1) then
 		{
 			{ 		   
-				Cratechecker = getmarkerpos  _x;
-				Crate_distance_Check = _BigFootPos distance2d  Cratechecker;
+				_Cratechecker = getmarkerpos  _x;
+				_Crate_distance_Check = _BigFootPos distance2d  _Cratechecker;
 
-				if (Crate_distance_Check <= Crate_Seperation_Distance) then
+				if (_Crate_distance_Check <= Bs_crate_seperation_distance) then
 				{
 					_CrateSpreadOK = false;
 				};			
@@ -89,6 +88,8 @@ for "_i" from 1 to _wreckCount do
 		//// creates the ship wreck after all conditions have been met ///
 		if (_BigFootPosDepth >= BS_locations_WaterDepth_max && _BigFootPosDepth <= BS_locations_WaterDepth_MIN && _CrateSpreadOK) then
 		{
+				BS_LastShipWreckSpawned = diag_tickTime;
+
 				_bigfoot_locationFound = true;
 
 			    format["Found position at [%1] for wreck.", _wreckagePosition] call ExileServer_BigfootsShipwrecks_util_logCommand;

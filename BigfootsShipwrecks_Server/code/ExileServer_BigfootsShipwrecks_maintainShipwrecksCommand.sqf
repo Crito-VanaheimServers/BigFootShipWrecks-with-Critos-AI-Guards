@@ -43,8 +43,9 @@ private["_coords", "_countWrecks", "_crateClaimMessageRadius", "_i", "_isPlayerI
 	if (BS_count_shipwrecks <= 0 && BS_AllowRespawn) then 	//added by Ketanna
 	{
 		
-		sleep BS_AllowRespawn_Timer;		//added by Ketanna
-	
-		BS_count_shipwrecks = BS_respawn_count;		//added by Crito
-		[] call ExileServer_BigfootsShipwrecks_initialize;	//added by Crito
+		if(diag_tickTime - BS_LastShipWreckSpawned >= BS_AllowRespawn_Timer) then
+		{	
+			BS_count_shipwrecks = BS_respawn_count;		//added by Crito
+			[] call ExileServer_BigfootsShipwrecks_initialize;	//added by Crito
+		};
 	};
