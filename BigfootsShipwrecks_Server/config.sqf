@@ -58,10 +58,8 @@ BS_faceWear = "G_B_Diving";
 
 Bs_crate_seperation_distance = 10000; /// sets the min distance shipwrecks can spawn near each other. be aware of the size of your map to ensure the loop can complete.
 
-////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
-///// This script based on your settings will limit how deep or shallow the water is where the crates spawn... no more deep deep water if desired
-
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
+////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
 BS_locations_WaterDepth_max = 50;   /// the max water depth you want your crates to spawn in 
 BS_locations_WaterDepth_MIN = 25;	   /// the min water depth you want your crates to spawn in
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
@@ -115,7 +113,7 @@ BS_boats =
 	"I_C_Boat_Transport_02_F",
 	"I_C_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F",
-	"O_Boat_Armed_01_hmg_F",
+	"O_Boat_Armed_01_hmg_F"
 	
 	//////////RHS///////////////////////////////
 	//"rhsgref_hidf_rhib",					////
@@ -159,48 +157,42 @@ BS_boats =
 ];
 
 ///////////////////////////////////////////DO NOT CHANGE ANYTHING BELOW THIS LINE//////////////////////////////////////////////////////
+BS_LastShipWreckSpawned = diag_tickTime;
 
-publicVariable "BS_debug_logCrateFill";
-publicVariable "BS_player_showCrateClaimMessage";
-publicVariable "BS_player_showCrateClaimMessageRadius";
-publicVariable "BS_class_crate";
-publicVariable "BS_class_wreckage";
-publicVariable "BS_count_shipwrecks";
-publicVariable "BS_locations_crateWreckOffset";
-publicVariable "BS_locations_center";
-publicVariable "BS_locations_distance_min";
-publicVariable "BS_locations_distance_max";
-publicVariable "BS_loot_enablePoptabs";
-publicVariable "BS_loot_count_poptabs_seed";
-publicVariable "BS_loot_itemCargo";
-publicVariable "BS_boats";
-publicVariable "BS_max_boats";
-publicVariable "BS_ai_side";
-publicVariable "BS_max_dist";
-publicVariable "BS_aimingAccuracy";
-publicVariable "BS_aimingShake";
-publicVariable "BS_aimingSpeed";
-publicVariable "BS_endurance";
-publicVariable "BS_spotDistance";
-publicVariable "BS_spotTime";
-publicVariable "BS_courage";
-publicVariable "BS_reloadSpeed";
-publicVariable "BS_commanding";
-publicVariable "BS_general";
-publicVariable "BS_uniform";
-publicVariable "BS_vest";
-publicVariable "BS_weapon";
-publicVariable "BS_faceWear";
-publicVariable "BS_headGear";
-publicVariable "BS_backPack";
-publicVariable "BS_Respect_Pay";
-publicVariable "BS_BoatMissions";
-publicVariable "BS_respawn_count";
-publicVariable "BS_RangeCleanUp";
-publicVariable "BS_MapMarker";
-publicVariable "BS_AllowRespawn";
-publicVariable "BS_AllowRespawn_Timer";
-publicVariable "Bs_crate_seperation_distance";
-publicVariable "BS_locations_WaterDepth_max";
-publicVariable "BS_locations_WaterDepth_MIN";
-
+//publicVariable "BS_debug_logCrateFill";
+//publicVariable "BS_player_showCrateClaimMessage";
+//publicVariable "BS_player_showCrateClaimMessageRadius";
+//publicVariable "BS_class_crate";
+//publicVariable "BS_class_wreckage";
+//publicVariable "BS_count_shipwrecks";
+//publicVariable "BS_locations_crateWreckOffset";
+//publicVariable "BS_locations_center";
+//publicVariable "BS_locations_distance_min";
+//publicVariable "BS_locations_distance_max";
+//publicVariable "BS_loot_enablePoptabs";
+//publicVariable "BS_loot_count_poptabs_seed";
+//publicVariable "BS_loot_itemCargo";
+//publicVariable "BS_boats";
+//publicVariable "BS_max_boats";
+//publicVariable "BS_ai_side";
+//publicVariable "BS_max_dist";
+//publicVariable "BS_aimingAccuracy";
+//publicVariable "BS_aimingShake";
+//publicVariable "BS_aimingSpeed";
+//publicVariable "BS_endurance";
+//publicVariable "BS_spotDistance";
+//publicVariable "BS_spotTime";
+//publicVariable "BS_courage";
+//publicVariable "BS_reloadSpeed";
+//publicVariable "BS_commanding";
+//publicVariable "BS_general";
+//publicVariable "BS_uniform";
+//publicVariable "BS_vest";
+//publicVariable "BS_weapon";
+//publicVariable "BS_faceWear";
+//publicVariable "BS_headGear";
+//publicVariable "BS_backPack";
+//publicVariable "BS_Respect_Pay";
+//publicVariable "BS_BoatMissions";
+//publicVariable "BS_respawn_count";
+//publicVariable "BS_RangeCleanUp";
