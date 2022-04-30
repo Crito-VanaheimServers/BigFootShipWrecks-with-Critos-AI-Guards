@@ -24,20 +24,21 @@ if (!isServer) exitWith {};
 ] call ExileServer_BigfootsShipwrecks_spawnShipwrecksCommand;
 
 // Handles marker cleanup and player detection
-uiSleep 15; // TODO: is this needed?
-[
-    10, 
-    ExileServer_BigfootsShipwrecks_maintainShipwrecksCommand, 
-    [
-        BS_count_shipwrecks, 
-        BS_player_showCrateClaimMessageRadius,
-        BS_player_showCrateClaimMessage
-    ], 
-    true
-] call ExileServer_system_thread_addTask;
-
-"Finished initialization." call ExileServer_BigfootsShipwrecks_util_logCommand;
-
-["systemChatRequest", ["Bigfoot's Shipwrecks Initialized"]] call ExileServer_system_network_send_broadcast;
-
+if (ExileServerShipWreckthread isEqualTo -1) then
+{
+	[
+		10, 
+		ExileServer_BigfootsShipwrecks_maintainShipwrecksCommand, 
+		[
+			BS_count_shipwrecks, 
+			BS_player_showCrateClaimMessageRadius,
+			BS_player_showCrateClaimMessage
+		], 
+		true
+	] call ExileServer_system_thread_addTask;
+	
+	"Finished initialization." call ExileServer_BigfootsShipwrecks_util_logCommand;
+	
+	["systemChatRequest", ["Bigfoot's Shipwrecks Initialized"]] call ExileServer_system_network_send_broadcast;
+};
 true

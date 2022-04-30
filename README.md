@@ -3,6 +3,7 @@
 # bigfoots-shipwrecks
 
 #Changelog:
+* 4/30/2022 v1.0.5 - Fixed thread being added on every shipwreck spawn.
 * 4/22/2022 v1.0.4 - Changed issues with variables and a sleep. Thank you to AeoG | El'Rabito for pointing these out.
 * 4/17/2022 v1.0.3 - Crito release with AI boat Guards credit goes to Bigfoot for v1.0.2 to work off of.
 * 8/5/2016 v1.0.2 - fixed undefined log call in preinit

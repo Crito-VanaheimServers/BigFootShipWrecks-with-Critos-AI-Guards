@@ -7,6 +7,8 @@
 
 call compile preprocessFileLineNumbers "BigfootsShipwrecks_Server\config.sqf";
 
+ExileServerShipWreckthread = -1;
+
 [] call ExileServer_BigfootsShipwrecks_initialize;
 
 "PostInit finished" call ExileServer_BigfootsShipwrecks_util_logCommand;

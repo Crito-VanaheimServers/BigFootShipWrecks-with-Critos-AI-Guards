@@ -10,16 +10,16 @@ BS_MapMarker = "o_naval"; 	// sets map marker used
 BS_debug_logCrateFill = true; // True to log items spawned in crates to server .RPT, usually right after [Display #24]
 
 BS_player_showCrateClaimMessage = true; // True to show toast and chat notification with coordinates to all players when any players are close to crate
-BS_player_showCrateClaimMessageRadius = 10; // Players must be this close (in meters) to trigger serverwide chat/toast notification
+BS_player_showCrateClaimMessageRadius = 20; // Players must be this close (in meters) to trigger serverwide chat/toast notification
 
 BS_class_crate = "Exile_Container_SupplyBox"; // Class of loot crate.
 BS_class_wreckage = "Land_UWreck_FishingBoat_F"; // Class of shipwreck.
 
 BS_AllowRespawn = true;	/// turns shipwreck respawns on/off
-BS_AllowRespawn_Timer = 300; //time in seconds for next set of shipwrecks to respawn when all wrecks on map have cleared.
+BS_AllowRespawn_Timer = 1800; //time in seconds for next set of shipwrecks to respawn when all wrecks on map have cleared.
 
-BS_count_shipwrecks = 3; // Total wrecks to spawn on server start
-BS_respawn_count = 3; // Total wrecks to respawn once all wrecks from server start have been cleared.
+BS_count_shipwrecks = 2; // Total wrecks to spawn on server start
+BS_respawn_count = 2; // Total wrecks to respawn once all wrecks from server start have been cleared.
 
 //////////////////AI Config Added by Crito @Vanaheim Gaming Servers (aka VGS). Discord: https://discord.gg/WEFzqPa /////////////////////// 
 BS_max_boats = 2;	//Max number of boats to guard the shipwreck.
@@ -103,7 +103,18 @@ BS_loot_itemCargo = // Items to put in loot crate.
     ["Exile_Item_ConcreteFloorKit", 0, 1, 100],
     ["Exile_Item_FortificationUpgrade", 0, 2, 100],
     ["Exile_Item_RubberDuck", 0, 2, 14], // No ducks guaranteed, but 14% of the time, an additional 0-2 ducks could spawn.
-    ["Exile_Item_Knife", 0, 1, 25] // No knives guaranteed, but 25% of the time an additional 0-1 knives could spawn.
+    ["Exile_Item_Knife", 0, 1, 25], // No knives guaranteed, but 25% of the time an additional 0-1 knives could spawn.
+	["Exile_Item_CodeLock", 0, 1, 25],
+	["optic_tws", 0, 1, 25],
+	["Laserdesignator_03", 0, 1, 25],
+	["optic_Nightstalker", 0, 1, 25],
+	["optic_tws_mg", 0, 1, 25],
+	["Exile_Item_Wrench", 0, 1, 25],
+	["Exile_Item_Beer", 0, 1, 25],
+	["H_HelmetO_ViperSP_hex_F", 0, 1, 25],
+	["H_HelmetO_ViperSP_ghex_F", 0, 1, 25],
+	["ToolKit", 0, 1, 25],
+	["Laserdesignator", 0, 1, 25]
 ]; 
 
 BS_boats =
@@ -113,7 +124,7 @@ BS_boats =
 	"I_C_Boat_Transport_02_F",
 	"I_C_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F",
-	"O_Boat_Armed_01_hmg_F"
+	"O_Boat_Armed_01_hmg_F",
 	
 	//////////RHS///////////////////////////////
 	//"rhsgref_hidf_rhib",					////
