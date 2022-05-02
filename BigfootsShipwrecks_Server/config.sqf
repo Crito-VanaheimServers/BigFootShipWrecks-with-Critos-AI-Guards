@@ -61,7 +61,7 @@ Bs_crate_seperation_distance = 10000; /// sets the min distance shipwrecks can s
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 ////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
 BS_locations_WaterDepth_max = 50;   /// the max water depth you want your crates to spawn in 
-BS_locations_WaterDepth_MIN = 25;	   /// the min water depth you want your crates to spawn in
+BS_locations_WaterDepth_MIN = 30;	   /// the min water depth you want your crates to spawn in
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 
 BS_locations_crateWreckOffset = 10; // Distance from wreck to spawn crate.
@@ -114,7 +114,13 @@ BS_loot_itemCargo = // Items to put in loot crate.
 	["H_HelmetO_ViperSP_hex_F", 0, 1, 25],
 	["H_HelmetO_ViperSP_ghex_F", 0, 1, 25],
 	["ToolKit", 0, 1, 25],
-	["Laserdesignator", 0, 1, 25]
+	["Laserdesignator", 0, 1, 25],
+	["Laserbatteries", 0, 1, 25],
+	["Laserdesignator_01_khk_F", 0, 1, 25],
+	["B_Static_Designator_01_F", 0, 1, 25],
+	["Laserdesignator_02_ghex_F", 0, 1, 25],
+	["O_Static_Designator_02_F", 0, 1, 25],
+	["Laserdesignator_02", 0, 1, 50]
 ]; 
 
 BS_boats =
@@ -124,7 +130,7 @@ BS_boats =
 	"I_C_Boat_Transport_02_F",
 	"I_C_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F",
-	"O_Boat_Armed_01_hmg_F",
+	"O_Boat_Armed_01_hmg_F"
 	
 	//////////RHS///////////////////////////////
 	//"rhsgref_hidf_rhib",					////
