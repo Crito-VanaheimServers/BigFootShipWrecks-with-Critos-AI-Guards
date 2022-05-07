@@ -10,13 +10,16 @@ BS_MapMarker = "o_naval"; 	// sets map marker used
 BS_debug_logCrateFill = true; // True to log items spawned in crates to server .RPT, usually right after [Display #24]
 
 BS_player_showCrateClaimMessage = true; // True to show toast and chat notification with coordinates to all players when any players are close to crate
-BS_player_showCrateClaimMessageRadius = 20; // Players must be this close (in meters) to trigger serverwide chat/toast notification
+BS_player_showCrateClaimMessageRadius = 50; // Players must be this close (in meters) to trigger serverwide chat/toast notification
+BS_Player_nearCrate = 10;					//distance Player needs to be for AI if still alive and in boats to jump out and attack them at crate
 
 BS_class_crate = "Exile_Container_SupplyBox"; // Class of loot crate.
 BS_class_wreckage = "Land_UWreck_FishingBoat_F"; // Class of shipwreck.
 
 BS_AllowRespawn = true;	/// turns shipwreck respawns on/off
-BS_AllowRespawn_Timer = 1800; //time in seconds for next set of shipwrecks to respawn when all wrecks on map have cleared.
+BS_AllowRespawn_Timer = 1800; //time in seconds for respawn of next ship wreck from time first set spawned in.
+							  //If first set is not complete respawn will not happen until they are completed.
+							  // Mission only fully complete if crate is farther than BS_RangeCleanUp range.
 
 BS_count_shipwrecks = 2; // Total wrecks to spawn on server start
 BS_respawn_count = 2; // Total wrecks to respawn once all wrecks from server start have been cleared.
@@ -61,7 +64,7 @@ Bs_crate_seperation_distance = 10000; /// sets the min distance shipwrecks can s
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 ////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
 BS_locations_WaterDepth_max = 50;   /// the max water depth you want your crates to spawn in 
-BS_locations_WaterDepth_MIN = 30;	   /// the min water depth you want your crates to spawn in
+BS_locations_WaterDepth_MIN = 25;	   /// the min water depth you want your crates to spawn in
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 
 BS_locations_crateWreckOffset = 10; // Distance from wreck to spawn crate.
@@ -119,7 +122,6 @@ BS_loot_itemCargo = // Items to put in loot crate.
 	["Laserdesignator_01_khk_F", 0, 1, 25],
 	["B_Static_Designator_01_F", 0, 1, 25],
 	["Laserdesignator_02_ghex_F", 0, 1, 25],
-	["O_Static_Designator_02_F", 0, 1, 25],
 	["Laserdesignator_02", 0, 1, 50]
 ]; 
 
@@ -175,7 +177,7 @@ BS_boats =
 
 ///////////////////////////////////////////DO NOT CHANGE ANYTHING BELOW THIS LINE//////////////////////////////////////////////////////
 BS_LastShipWreckSpawned = diag_tickTime;
-
+BS_AllMrkrNames = [];
 //publicVariable "BS_debug_logCrateFill";
 //publicVariable "BS_player_showCrateClaimMessage";
 //publicVariable "BS_player_showCrateClaimMessageRadius";

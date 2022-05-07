@@ -46,7 +46,9 @@ forEach
 	['ExileServer_BigfootsShipwrecks_AIDriverDeath',
 		'BigfootsShipwrecks_Server\code\ExileServer_BigfootsShipwrecks_AIEvents\ExileServer_BigfootsShipwrecks_AIDriverDeath.sqf'],
 		['ExileServer_BigfootsShipWrecks_AIPlayerAtCrate',
-	'BigfootsShipwrecks_Server\code\ExileServer_BigfootsShipwrecks_AIEvents\ExileServer_BigfootsShipWrecks_AIPlayerAtCrate.sqf']
+	'BigfootsShipwrecks_Server\code\ExileServer_BigfootsShipwrecks_AIEvents\ExileServer_BigfootsShipWrecks_AIPlayerAtCrate.sqf'],
+			['ExileServer_BigfootsShipwrecks_CrateMarkerCommand',
+	'BigfootsShipwrecks_Server\code\ExileServer_BigfootsShipwrecks_CrateMarkerCommand.sqf']
 ];
 
 "PreInit finished" call ExileServer_BigfootsShipwrecks_util_logCommand;

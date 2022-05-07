@@ -98,7 +98,7 @@ for "_i" from 1 to _wreckCount do
 				_wreckId = _i call ExileServer_BigfootsShipwrecks_getWreckIdForSpawnCountIndexQuery;
 
 				// Create a marker
-				[_wreckId, _wreckagePosition, "Shipwrecked loot crate"] call ExileServer_BigfootsShipwrecks_createShipwreckMarkerCommand;
+				[_wreckId, _wreckagePosition, "Shipwreck"] call ExileServer_BigfootsShipwrecks_createShipwreckMarkerCommand;
 				
 				format["Spawning wreck and crate near [%1] with id [%2].", _wreckagePosition, _wreckId ] call ExileServer_BigfootsShipwrecks_util_logCommand;
 				
