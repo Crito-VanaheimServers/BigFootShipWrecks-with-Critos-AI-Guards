@@ -3,6 +3,7 @@
 # bigfoots-shipwrecks
 
 #Changelog:
+* 5/23/2022 v1.0.8 - Removed moving crate marker. Added AI Events Attack Heli and Rappeling Units. If you do not use advanced rappeling mod turn off in config.
 * 5/7/2022 v1.0.7 - Added Marker for crate location after crate found. Creats marker for crate and moves with location of crate until cleanup.
 * 5/1/2022 v1.0.6 - Fixed issue with player respect getting reset when using vehicle to kill boats.
 * 4/30/2022 v1.0.5 - Fixed thread being added on every shipwreck spawn.
