@@ -4,12 +4,12 @@ by Crito @Vanaheim Gaming Servers
 Discord: https://discord.gg/WEFzqPa
 */
 
-private ["_bsUnit","_bsGroupID","_bs_AimingAccuracy","_bs_AimingShake","_bs_AimingSpeed","_bs_Endurance","_bs_SpotDistance","_bs_SpotTime",
+private ["_bsUnit","_bs_AimingAccuracy","_bs_AimingShake","_bs_AimingSpeed","_bs_Endurance","_bs_SpotDistance","_bs_SpotTime",
 		 "_bs_Courage","_bs_ReloadSpeed","_bs_Commanding","_bs_General","_bs_Uniform","_bs_Vest","_bs_Weapon","_bs_FaceWear",
 		 "_bs_HeadGear","_bs_BackPack"];
 
 _bsGroup = _this select 0;
-_bsGroupID = _this select 1;
+//_bsGroupID = _this select 1;
 _bsSpawn = [0,0,0];
 _bs_AimingAccuracy = BS_aimingAccuracy;
 _bs_AimingShake = BS_aimingShake;

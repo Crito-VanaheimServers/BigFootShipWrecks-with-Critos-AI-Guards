@@ -18,10 +18,10 @@ private ["_bsGroup","_bsSpawnPos","_bsGroupID","_wreckage","_bsBoat","_bsCrate",
 
 	_bsBoat = [];
 	missionnamespace setvariable ["bsBoatArray",_bsBoat];	//Added by Ketanna
-
+	
 	for "_i" from 1 to _maxBoats do
 	{	
-		_bsBoatArray = missionnamespace getvariable ["bsBoatArray",_bsBoat];	//Added by Ketanna	
+		_bsBoatArray = missionnamespace getvariable ["bsBoatArray",_bsBoat];	//Added by Ketanna
 		_bsSpawnPos = [_wreckagePosition, 1, BS_max_dist, 0, 2, 0, 0] call BIS_fnc_findSafePos;			
 		[_bsSpawnPos, _bsGroup, _cratePosition, _bsGroupID, _wreckage,_bsBoatArray,_crate] call ExileServer_BigfootsShipwrecks_BoatSpawn;
 	};

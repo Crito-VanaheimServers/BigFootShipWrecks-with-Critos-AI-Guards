@@ -12,26 +12,14 @@ private["_coords", "_countWrecks", "_crateClaimMessageRadius", "_i", "_isPlayerI
 		_markerId = _i call ExileServer_BigfootsShipwrecks_getWreckIdForSpawnCountIndexQuery;
 		_markerPosition = getMarkerPos _markerId;
 		
-		if(!isNil "_markerPosition") then 
+		if((!isNil "_markerPosition") && (markerColor _markerId == "ColorBlue")) then 
 		{
-			_isPlayerInRange = [_markerPosition, _crateClaimMessageRadius] call ExileClient_util_world_isAlivePlayerInRange;
+			_bsMonitorDetect = [_markerPosition, BSMonitorRadius] call ExileServer_BigfootsShipwrecks_isAlivePlayerInRange;
 
-			if (_isPlayerInRange ) then 
+			if (_bsMonitorDetect) then 
 			{
-					format["Crate found by players at [%1].", _markerPosition] call ExileServer_BigfootsShipwrecks_util_logCommand;
-				
-					if (_showCrateClaimMessage) then 
-					{
-						_coords = mapGridPosition _markerPosition;
-						_message = format ["Player found ship wreck at %1.", _coords];
-	
-						["Info", "Shipwreck loot found!", _message] call ExileServer_BigfootsShipwrecks_sendClientNotificationCommand;
-						["systemChatRequest", [_message]] call ExileServer_system_network_send_broadcast;
-					};
-
-					deleteMarker _markerId;
-					
-					[_markerId,_markerPosition] spawn ExileServer_BigfootsShipwrecks_AICleanUP_Monitor; //added by Crito
+					_markerId setMarkerColor "ColorRed";
+					[_markerId,_markerPosition,_showCrateClaimMessage,_crateClaimMessageRadius] spawn ExileServer_BigfootsShipwrecks_Mission_Monitor; //added by Crito
 			};
 		};
 	};			

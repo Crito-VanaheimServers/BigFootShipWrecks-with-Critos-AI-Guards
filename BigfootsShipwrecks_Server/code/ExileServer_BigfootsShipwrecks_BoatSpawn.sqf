@@ -4,9 +4,9 @@ by Crito @Vanaheim Gaming Servers
 Discord: https://discord.gg/WEFzqPa
 */
 
-private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos","_bsWP4Pos","_bsWP1",
+private ["_bsSpawnPos","_bsBoatClass","_cratePosition","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos","_bsWP4Pos","_bsWP1",
 		 "_bsWP2","_bsWP3","_bsWP4","_bsTurret","_bsTurretCrew","_bsGunner","_bsGunnerCrew","_bsGroupID",
-		 "_wreckage","_bsGroup","_wreckageVars","_bsBoatArray"];
+		 "_wreckage","_bsGroup","_wreckageVars","_bsBoatArray","_bs_Boatgrp","_crate","_bsCommander","_bsCommanderCrew"];
 
 		_bsSpawnPos = _this select 0;
 		_bsGroup = _this select 1;
@@ -19,7 +19,7 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		_bsBoatClass = selectRandom BS_boats;
 
 		_bsBoat = createVehicle [_bsBoatClass, _bsSpawnPos, [], 0, "NONE"];
-		
+				
 		_bsBoatArray append [_bsBoat];
 		
 		missionNamespace setVariable ["bsBoatArray",_bsBoatArray];
@@ -35,7 +35,7 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		_wreckageVars = [_bsGroup,_wreckage,_bsBoatArray,_crate];	//Added by Ketanna
 		missionNamespace setVariable [_bsGroupID,_wreckageVars];	//Added by Ketanna
 	
-		_bsDriver = [_bsGroup,_bsGroupID] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
+		_bsDriver = [_bsGroup] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
 		_bsDriver moveInDriver _bsBoat;
 		[_bsDriver] joinSilent _bsGroup;
 		
@@ -43,7 +43,7 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		{
 			if (isNull(_x select 0))then 
 			{
-				_bsCommanderCrew = [_bsGroup,_bsGroupID] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
+				_bsCommanderCrew = [_bsGroup] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
 				_bsCommanderCrew moveInTurret [_bsBoat, _x select 3];
 				[_bsCommanderCrew] joinSilent _bsGroup;
 			};
@@ -53,7 +53,7 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		{
 			if (isNull(_x select 0))then 
 			{
-				_bsTurretCrew = [_bsGroup,_bsGroupID] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
+				_bsTurretCrew = [_bsGroup] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
 				_bsTurretCrew moveInTurret [_bsBoat, _x select 3];
 				[_bsTurretCrew] joinSilent _bsGroup;
 			};
@@ -63,16 +63,17 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		{
 			if (isNull(_x select 0))then 
 			{
-				_bsGunnerCrew = [_bsGroup,_bsGroupID] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
+				_bsGunnerCrew = [_bsGroup] call ExileServer_BigfootsShipwrecks_AIUnitSpawn;
 				_bsGunnerCrew moveInTurret [_bsBoat, _x select 3];
 				[_bsGunnerCrew] joinSilent _bsGroup;
 			};
 		}forEach _bsGunner;
 
-
-		for "_i" from (count (waypoints _bsGroup) -1) to 0 step -1 do
+		_bs_Boatgrp = group _bsBoat;
+		
+		for "_i" from (count (waypoints _bs_Boatgrp) -1) to 0 step -1 do
 		{
-			deleteWaypoint [_bsGroup, _i];
+			deleteWaypoint [_bs_Boatgrp, _i];
 		};
 
 		_bsWP1Pos = [_cratePosition] call ExileServer_BigfootsShipwrecks_BoatWayPoints;
@@ -80,21 +81,21 @@ private ["_bsBoatClass","_bsBoat","_bsDriver","_bsWP1Pos","_bsWP2Pos","_bsWP3Pos
 		_bsWP3Pos = [_cratePosition] call ExileServer_BigfootsShipwrecks_BoatWayPoints;
 		_bsWP4Pos = [_cratePosition] call ExileServer_BigfootsShipwrecks_BoatWayPoints;
 
-		_bsWP1 = _bsGroup addWaypoint [_bsWP1Pos, 1];
+		_bsWP1 = _bs_Boatgrp addWaypoint [_bsWP1Pos, 1];
 		_bsWP1 setWaypointSpeed "FULL";
 		_bsWP1 setWaypointType "MOVE";
 			
-		_bsWP2 = _bsGroup addWaypoint [_bsWP2Pos, 1];
+		_bsWP2 = _bs_Boatgrp addWaypoint [_bsWP2Pos, 1];
 		_bsWP2 setWaypointSpeed "FULL";
 		_bsWP2 setWaypointType "MOVE";
 		
-		_bsWP3 = _bsGroup addWaypoint [_bsWP3Pos, 1];
+		_bsWP3 = _bs_Boatgrp addWaypoint [_bsWP3Pos, 1];
 		_bsWP3 setWaypointSpeed "FULL";
 		_bsWP3 setWaypointType "MOVE";
 			
-		_bsWP4 = _bsGroup addWaypoint [_bsWP4Pos, 1];
+		_bsWP4 = _bs_Boatgrp addWaypoint [_bsWP4Pos, 1];
 		_bsWP4 setWaypointSpeed "FULL";
 		_bsWP4 setWaypointType "CYCLE";
 
-		_bsGroup setCombatMode "RED";
-		_bsGroup setBehaviour "AWARE";
+		_bs_Boatgrp setCombatMode "RED";
+		_bs_Boatgrp setBehaviour "AWARE";

@@ -14,7 +14,7 @@ _bsGroup = group _bsBoat;
 _bsBoatPos = getpos _bsBoat;
 _bsWreck = nearestObjects [_bsBoatPos, [BS_class_wreckage], 1000, false];
 _bsWreckage = _bsWreck select 0;
-_bsWreckWP = getPos _bsWreckage;
+_bsWreckWP = getPosASL _bsWreckage;
 
 	{
 		doGetOut _x;

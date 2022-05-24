@@ -4,15 +4,16 @@ by Crito @Vanaheim Gaming Servers
 Discord: https://discord.gg/WEFzqPa
 */
 
-private ["_bsGroupID","_wreckageVars","_bsWreckage","_bsBoatArray","_bsWreckagePos","_bsGroup","_bsBoatCrew","_bsCrateThief","_bsCrateThiefPos"];
+private ["_bsGroupID","_wreckageVars","_bsCrate","_bsBoatArray","_bsWreckagePos","_bsGroup","_bsBoatCrew","_bsCrateThief","_bsCrateThiefPos"];
 
 _bsGroupID = _this select 0;
 _wreckageVars = missionNamespace getVariable [_bsGroupID,objNull];
-_bsWreckage = _wreckageVars select 1;
 _bsBoatArray = _wreckageVars select 2;
-_bsWreckagePos = getpos _bsWreckage;
+_bsCrate = _wreckageVars select 3;
+
+_bsWreckagePos = getPosASL _bsCrate;
 _bsCrateThief = nearestObject [_bsWreckagePos, "CAManBase"];
-_bsCrateThiefPos = getpos _bsCrateThief;
+_bsCrateThiefPos = getposASL _bsCrateThief;
 
 	{
 		_bsGroup = group _x;

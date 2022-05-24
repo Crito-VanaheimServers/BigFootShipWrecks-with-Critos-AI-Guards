@@ -5,29 +5,45 @@ AI config added by Crito @Vanaheim Gaming Servers Discord: https://discord.gg/WE
 Crate distances and water depth settings added by Ketanna @Kronik Servers
 */
 
-BS_MapMarker = "o_naval"; 	// sets map marker used
+BS_MapMarker = "o_naval"; // sets map marker used
 
 BS_debug_logCrateFill = true; // True to log items spawned in crates to server .RPT, usually right after [Display #24]
 
-BS_player_showCrateClaimMessage = true; // True to show toast and chat notification with coordinates to all players when any players are close to crate
-BS_player_showCrateClaimMessageRadius = 50; // Players must be this close (in meters) to trigger serverwide chat/toast notification
-BS_Player_nearCrate = 10;					//distance Player needs to be for AI if still alive and in boats to jump out and attack them at crate
+BS_player_showCrateClaimMessage = true; // True to show toast and chat notification with coordinates to all players when any players are 
+										//close to crate
+										
+BS_player_showCrateClaimMessageRadius = 30; // Players must be this close (in meters) to trigger serverwide chat/toast notification
+
+BSMonitorRadius = 500;	//Radius for player to trigger mission monitor basically starting the mission.
+						//set range high enough to trigger heli events if using them for best effect.
+								
+BS_Player_nearCrate = 15; //distance Player needs to be to crate for AI if still alive and in boats to jump out and attack them at crate
 
 BS_class_crate = "Exile_Container_SupplyBox"; // Class of loot crate.
+
 BS_class_wreckage = "Land_UWreck_FishingBoat_F"; // Class of shipwreck.
 
-BS_AllowRespawn = true;	/// turns shipwreck respawns on/off
+BS_AllowRespawn = true;	// turns shipwreck respawns on/off
+
 BS_AllowRespawn_Timer = 1800; //time in seconds for respawn of next ship wreck from time first set spawned in.
 							  //If first set is not complete respawn will not happen until they are completed.
-							  // Mission only fully complete if crate is farther than BS_RangeCleanUp range.
 
-BS_count_shipwrecks = 2; // Total wrecks to spawn on server start
-BS_respawn_count = 2; // Total wrecks to respawn once all wrecks from server start have been cleared.
+BSCleanTime = 600;	//time in seconds a triggered mission will clear off map if player abandonds it and no players are near it.
+
+BS_RangeCleanUp = 1000;	//Range in meters the player has to be away from location of completed wreck for clean up to happen.
+						//If player and crate get past this range BSCleanTime will be skipped and clean up happens imeadiatly.
+
+BS_count_shipwrecks = 2; // Total wrecks to spawn on server start. This will also be the toatal number that will respawn once all current 
+						 // wrecks have been completed.
+
+//useMovingCrateMarker = true;	//NOT IN USE WORK IN PROGRESS	// if true a marker will show location of crate when mission marker dissapears and update on move until past
+									// the BS_RangeCleanUp where the clean up of mission takes place Or the BSCleanTime timer cleans up mission.
 
 //////////////////AI Config Added by Crito @Vanaheim Gaming Servers (aka VGS). Discord: https://discord.gg/WEFzqPa /////////////////////// 
+
 BS_max_boats = 2;	//Max number of boats to guard the shipwreck.
 BS_ai_side = east;	//Side the AI will Be on. east, west, independent, or civilian.
-BS_max_dist = 50;	//max distance AI will roam around the position of the wreck.
+BS_max_dist = 100;	//max distance AI will roam around the position of the wreck.
 BS_Respect_Pay = 50; //Amount of respect player gets for each AI kill.
 
 /////AI Skill/////
@@ -56,32 +72,32 @@ BS_faceWear = "G_B_Diving";
 					//then go to BigfootsShipwrecks_Server\code\ExileServer_BigfootsShipwrecks_AIUnitSpawn.sqf
 					//and remove the // from lines 20 and 52. Save all changes and pbo back up.
 
-/////////////////
+BS_attackHeliChance = 75; //% chance to have an attack heli spawn in to attack players who try to approach in a heli.
+						  //set to 0 if you do not want attack helis to spawn.
+						  //this will not trigger unless it detects entities of air in range.
+						  //added due to players using attack helis to wipe mission out
+								
+BS_AttackHeliType = "O_Heli_Attack_02_black_F";	//class of heli to spawn for attack event.
+
+UsingAdvancedRappelling = true;	//if you have Advanced Rappelling Mod installed you can set this to true for this event
+								//If not using Advanced Rappelling !!!!!!Do Not Set To True!!!!!!!!! Things will break!!!!!!!!!!!!!!
+
+BS_RappelHeliChance = 50;		//if UsingAdvancedRappelling set to true for % chance to have a heli spawn in and bring in rappelling troops.
+
+BS_RappelHeliType = "B_Heli_Transport_01_F"; //class of heli to spawn for rappel event.
 //////////////////End of AI Config////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Bs_crate_seperation_distance = 10000; /// sets the min distance shipwrecks can spawn near each other. be aware of the size of your map to ensure the loop can complete.
+Bs_crate_seperation_distance = 10000; // sets the min distance shipwrecks can spawn near each other. be aware of the size of your map
+									 //to ensure the loop can complete.
 
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
 ////////////// Water Depth check for crate spawns added by Ketanna  ////////////////
-BS_locations_WaterDepth_max = 50;   /// the max water depth you want your crates to spawn in 
-BS_locations_WaterDepth_MIN = 25;	   /// the min water depth you want your crates to spawn in
+BS_locations_WaterDepth_max = 50;  // the max water depth you want your crates to spawn in 
+BS_locations_WaterDepth_MIN = 25; // the min water depth you want your crates to spawn in
 ///////!!!!!!!!!!!!!!!!!WARNING DO NOT SET THESE TWO SETTINGS EXACTLY THE SAME OR THINGS WILL BREAK!!!!!!!!!!!!!!!!!!!!!
-
-BS_locations_crateWreckOffset = 10; // Distance from wreck to spawn crate.
-// BS_locations_center = [14912.4,15108.7,0]; // Center o fmap from which to spawn wrecks, on Altis this is in the central bay
-
-private _WorldSizeAdj = worldsize/2;
-BS_locations_center = [_WorldSizeAdj, _WorldSizeAdj,0];
-
-BS_locations_distance_min = 0; // Minimum distance from BS_location_center to spawn crate.
-
-//BS_locations_distance_max = 13000; // Maximum distance from BS_locations_center to spawn crate. Careful putting this too high or they will spawn off the map!
-BS_locations_distance_max = _WorldSizeAdj;
 
 BS_loot_enablePoptabs = true; // True to spawn random number of poptabs in crates, otherwise false.
 BS_loot_count_poptabs_seed = [3000, 5000, 18000]; // min/mid/max, so will spawn around 5k most of the time with small chance to be much closer to 18k and small chance to be closer to 3k
-
-BS_RangeCleanUp = 1000;	//Range in meters the player has to be away from location of completed wreck for clean up to happen.
 
 BS_loot_itemCargo = // Items to put in loot crate.
 [   // [class (if array, picks one random item), guaranteed amount, possible random additional amount, % chance of spawning additional random amount]
@@ -92,37 +108,46 @@ BS_loot_itemCargo = // Items to put in loot crate.
     ["Exile_Magazine_6Rnd_45ACP", 0, 3, 100],
     ["arifle_SDAR_F", 1, 1, 50],
     ["20Rnd_556x45_UW_mag", 1, 2, 100], // One mag guaranteed, with 100% chance to spawn between 0-2 more mags 
-    ["SatchelCharge_Remote_Mag", 1, 2, 100],
-    ["Exile_Item_Defibrillator", 1, 2, 100],
-    ["Exile_Item_Rope", 1, 1, 100],
-    ["Exile_Item_Vishpirin", 1, 3, 100],
-    ["Exile_Item_DuctTape", 1, 2, 100],
-    ["Exile_Item_PlasticBottleFreshWater", 0, 2, 100],
-    ["Exile_Item_EMRE", 0, 2, 100],
     [["V_RebreatherB", "V_RebreatherIA", "V_RebreatherIR"], 1, 1, 100],
     [["G_Diving", "G_B_Diving", "G_O_Diving", "G_I_Diving"], 1, 1, 100],
     [["NVGoggles", "NVGoggles_INDEP", "NVGoggles_OPFOR"], 1, 2, 100],
-    ["Exile_Item_ConcreteWallKit", 0, 1, 100],
+    ["optic_tws", 0, 1, 25],
     ["Exile_Item_ConcreteFloorKit", 0, 1, 100],
+    ["H_HelmetO_ViperSP_hex_F", 0, 1, 25],
     ["Exile_Item_FortificationUpgrade", 0, 2, 100],
-    ["Exile_Item_RubberDuck", 0, 2, 14], // No ducks guaranteed, but 14% of the time, an additional 0-2 ducks could spawn.
-    ["Exile_Item_Knife", 0, 1, 25], // No knives guaranteed, but 25% of the time an additional 0-1 knives could spawn.
-	["Exile_Item_CodeLock", 0, 1, 25],
-	["optic_tws", 0, 1, 25],
-	["Laserdesignator_03", 0, 1, 25],
-	["optic_Nightstalker", 0, 1, 25],
-	["optic_tws_mg", 0, 1, 25],
-	["Exile_Item_Wrench", 0, 1, 25],
-	["Exile_Item_Beer", 0, 1, 25],
-	["H_HelmetO_ViperSP_hex_F", 0, 1, 25],
-	["H_HelmetO_ViperSP_ghex_F", 0, 1, 25],
-	["ToolKit", 0, 1, 25],
-	["Laserdesignator", 0, 1, 25],
-	["Laserbatteries", 0, 1, 25],
-	["Laserdesignator_01_khk_F", 0, 1, 25],
-	["B_Static_Designator_01_F", 0, 1, 25],
-	["Laserdesignator_02_ghex_F", 0, 1, 25],
-	["Laserdesignator_02", 0, 1, 50]
+    ["Exile_Item_Knife", 0, 1, 25],
+    ["ToolKit", 0, 1, 25],
+    ["Exile_Item_Wrench", 0, 1, 25],
+    ["Exile_Item_ConcreteWallKit", 0, 1, 100],
+    ["Laserdesignator_02_ghex_F", 0, 1, 25],
+    ["Exile_Item_Rope", 1, 1, 100],
+    ["Laserdesignator_03", 0, 1, 25],
+    ["Laserdesignator_01_khk_F", 0, 1, 25],
+    ["Laserdesignator", 0, 1, 25],
+    ["Laserbatteries", 0, 1, 25],
+    ["optic_tws_mg", 0, 1, 25],
+    ["H_HelmetO_ViperSP_ghex_F", 0, 1, 25],
+    ["Exile_Item_Vishpirin", 1, 3, 100],
+    ["Laserdesignator_02", 0, 1, 50],
+    ["SatchelCharge_Remote_Mag", 1, 2, 100],
+    ["Exile_Item_CodeLock", 0, 1, 25],
+    ["optic_Nightstalker", 0, 1, 25],
+    ["B_Static_Designator_01_F", 0, 1, 25],
+    ["Exile_Item_DuctTape", 1, 2, 100],
+    ["Exile_Item_Beer", 0, 1, 25],
+    ["Exile_Item_Defibrillator", 1, 2, 100],
+    ["Exile_Item_EMRE", 0, 2, 100],
+    ["Exile_Item_PlasticBottleFreshWater", 0, 2, 100],
+    ["Exile_Item_RubberDuck", 0, 2, 14],
+	["Exile_Magazine_Battery", 0, 1, 25],
+	["Exile_Item_Grinder", 0, 1, 25],
+	["Exile_Item_Laptop", 0, 1, 25],
+	["Exile_Item_Knife", 0, 1, 25],
+	["Exile_Item_ThermalScannerPro", 0, 1, 25],
+	["Exile_Item_BreachingCharge_Wood", 0, 1, 25],
+	["Exile_Item_BreachingCharge_Metal", 0, 1, 25],
+	["Exile_Item_BreachingCharge_BigMomma", 0, 1, 25],
+	["Exile_Headgear_GasMask", 0, 1, 25]
 ]; 
 
 BS_boats =
@@ -176,8 +201,21 @@ BS_boats =
 ];
 
 ///////////////////////////////////////////DO NOT CHANGE ANYTHING BELOW THIS LINE//////////////////////////////////////////////////////
+BS_respawn_count = BS_count_shipwrecks;
+BS_locations_crateWreckOffset = 10; // Distance from wreck to spawn crate.
+// BS_locations_center = [14912.4,15108.7,0]; // Center o fmap from which to spawn wrecks, on Altis this is in the central bay
+
+private _WorldSizeAdj = worldsize/2;
+BS_locations_center = [_WorldSizeAdj, _WorldSizeAdj,0];
+
+BS_locations_distance_min = 0; // Minimum distance from BS_location_center to spawn crate.
+
+//BS_locations_distance_max = 13000; // Maximum distance from BS_locations_center to spawn crate. Careful putting this too high or they will spawn off the map!
+BS_locations_distance_max = _WorldSizeAdj;
+
 BS_LastShipWreckSpawned = diag_tickTime;
 BS_AllMrkrNames = [];
+
 //publicVariable "BS_debug_logCrateFill";
 //publicVariable "BS_player_showCrateClaimMessage";
 //publicVariable "BS_player_showCrateClaimMessageRadius";
